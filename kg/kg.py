@@ -1,12 +1,4 @@
 #coding:utf-8
-'''
-Created on 2018年1月26日
-
-@author: qiujiahao
-
-@email:997018209@qq.com
-
-'''
 import sys
 import re
 sys.path.append('..')
@@ -18,23 +10,23 @@ class data(object):
         self.data_process()
 
     def data_process(self):
-        #初始化操作
+        # 操作を初期化する
         self.data_init()
 
-        #插入数据
+        # データを挿入する
         self.insert_datas()
 
 
     def data_init(self):
-        #连接图数据库
+        # グラフデータベースへの接続
         print('データの前処理を開始する')
-        self.graph = Graph("bolt://localhost:7687", username="neo4j", password="kentaro")
+        self.graph = Graph("bolt://localhost:7687",user=self.args.neo4j_user,password=self.args.neo4j_password)
         self.selector=NodeSelector(self.graph)
         self.graph.delete_all()
 
     def insert_datas(self):
         print('データの挿入を開始')
-        with open('../data/sample_three.txt','r',encoding='utf-8') as f:
+        with open('../data/dataset.txt','r',encoding='utf-8') as f:
             lines,num=f.readlines(),-1
             for line in lines:
                 num+=1

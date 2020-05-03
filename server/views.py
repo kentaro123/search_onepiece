@@ -19,9 +19,4 @@ def look_up():
     client_params = request.form
     server_param = {}
     cont = kg.lookup_entry(client_params,server_param)
-    """
-    server_param['id']=client_params['id']
-    server_param['jsonrpc']=client_params['jsonrpc']
-    server_param['method']=client_params['method']
-    """
     return render_template("result.html",cont=cont)
