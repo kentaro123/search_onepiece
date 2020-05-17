@@ -13,6 +13,7 @@ if __name__ == '__main__':
     """
     app.run(debug=True, host='192.168.100.101', port=args.http_port)
     """
-    app.run(debug=True,host=os.getenv('APP_ADDRESS', 'localhost'), port=8000)
+    # app.run(debug=False,host=os.getenv('APP_ADDRESS', 'localhost'), port=8000)
+    app.run(debug=False)
 
 app = Flask(__name__)
