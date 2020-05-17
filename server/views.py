@@ -8,6 +8,10 @@ import json
 import os
 
 
+
+app = Flask(__name__)
+app.debug = True
+
 @app.route("/")
 def index():
     return render_template("login.html")
@@ -20,3 +24,7 @@ def look_up():
     server_param = {}
     cont = kg.lookup_entry(client_params,server_param)
     return render_template("result.html",cont=cont)
+
+if __name__ == '__main__':
+    port = int(os.environ.get('PORT', 5000))
+    app.run(port=port)
